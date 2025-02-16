@@ -4,11 +4,6 @@
   <img src="preview.jpg" alt="Preview" width="800">
 </div>
 
-<div align="center">
-  <a href="#features">Features</a> •
-  <a href="#for-whom">For Whom</a> •
-  <a href="#installation">Installation</a>
-</div>
 
 ## 🌟 About
 
