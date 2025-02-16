@@ -14,21 +14,36 @@ body, html {
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url('https://img1.akspic.ru/previews/3/2/0/8/7/178023/178023-temnaya_ubijca_akame-akame-multik-ubijca_akame-rukav-x750.jpg');
+    background-image: url('background.jpg');
     background-size: cover;
     background-position: center;
     z-index: -1;
     filter: brightness(0.4);
 }
 
+.main-container {
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+}
+
 .content {
-    position: relative;
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 30px;
+    border-radius: 15px;
     text-align: center;
+    backdrop-filter: blur(5px);
+    max-width: 600px;
+    width: 90%;
+}
+
+.message-container {
+    position: fixed;
+    right: 50px;
     top: 50%;
     transform: translateY(-50%);
-    padding: 20px;
-    box-sizing: border-box;
-    z-index: 1;
+    z-index: 1000;
 }
 
 h1 {
@@ -47,9 +62,15 @@ button {
     cursor: pointer;
     transition: background-color 0.3s ease;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    margin: 5px;
 }
 
-button:hover {
+button:disabled {
+    background-color: #666;
+    cursor: not-allowed;
+}
+
+button:not(:disabled):hover {
     background-color: #c2185b;
 }
 
@@ -59,72 +80,57 @@ button:hover {
     text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
 }
 
-#special-message {
-    position: fixed;
+#special-message, #enigma-message, #goul-message, #beer-message {
     font-size: 3em;
     font-weight: bold;
-    z-index: 1000;
-}
-
-.gul-message {
     color: #ff0000;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
     animation: shake 0.1s infinite;
-}
-
-.beer-message {
-    color: #00ff00;
-    animation: move 5s linear infinite;
+    margin-bottom: 20px;
 }
 
 .hidden {
     display: none;
 }
 
+.version {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    color: #fff;
+    font-size: 0.8em;
+}
+
 @keyframes shake {
-    0% { transform: translate(1px, 1px) rotate(0deg); }
-    10% { transform: translate(-1px, -2px) rotate(-1deg); }
-    20% { transform: translate(-3px, 0px) rotate(1deg); }
-    30% { transform: translate(3px, 2px) rotate(0deg); }
-    40% { transform: translate(1px, -1px) rotate(1deg); }
-    50% { transform: translate(-1px, 2px) rotate(-1deg); }
-    60% { transform: translate(-3px, 1px) rotate(0deg); }
-    70% { transform: translate(3px, 1px) rotate(-1deg); }
-    80% { transform: translate(-1px, -1px) rotate(1deg); }
-    90% { transform: translate(1px, 2px) rotate(0deg); }
-    100% { transform: translate(1px, -2px) rotate(-1deg); }
+    0% { transform: translate(0, 0) rotate(0deg); }
+    25% { transform: translate(-2px, 0) rotate(-1deg); }
+    50% { transform: translate(0, -2px) rotate(1deg); }
+    75% { transform: translate(2px, 0) rotate(-1deg); }
+    100% { transform: translate(0, 0) rotate(0deg); }
 }
 
-@keyframes move {
-    0% { top: 10%; left: 10%; }
-    25% { top: 90%; left: 50%; }
-    50% { top: 50%; left: 90%; }
-    75% { top: 10%; left: 30%; }
-    100% { top: 10%; left: 10%; }
-}
-
-@media (max-width: 600px) {
-    h1 {
-        font-size: 1.5em;
+@media (max-width: 768px) {
+    .message-container {
+        right: 20px;
     }
 
-    button {
-        font-size: 0.9em;
-        padding: 10px 20px;
-    }
-
-    #hero-display {
-        font-size: 1.2em;
-    }
-
-    #special-message {
+    #special-message, #enigma-message, #goul-message, #beer-message {
         font-size: 2em;
     }
-}
-#special-message {
-    transition: color 0.1s, text-shadow 0.1s;
-    pointer-events: none;
-}
 
+    h1 { 
+        font-size: 1.5em; 
+    }
+    
+    button { 
+        font-size: 0.9em; 
+        padding: 10px 20px; 
+    }
+    
+    #hero-display { 
+        font-size: 1.2em; 
+    }
+}
 .content {
     position: relative;
     z-index: 1;
