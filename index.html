@@ -7,8 +7,10 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="background-image"></div>
+    <!-- Фоновое изображение -->
+    <div class="background-image" style="background-image: url('background.jpg');"></div>
     
+    <!-- Основной контейнер интерфейса -->
     <div class="main-container">
         <div class="content">
             <h1>Dota 2 Hero Roulette — ZXC Goul Edition</h1>
@@ -17,15 +19,17 @@
             <div id="hero-display"></div>
         </div>
         
+        <!-- Контейнер для сообщений -->
         <div class="message-container">
-            <div id="special-message" class="hidden"></div>
-            <div id="enigma-message" class="hidden">катя возьми телефон</div>
+            <!-- Сообщения для специальных героев -->
             <div id="goul-message" class="hidden">да ты реальный гуль</div>
             <div id="beer-message" class="hidden">ПИВО</div>
+            <div id="enigma-message" class="hidden">катя возьми телефон</div>
+            <!-- Дополнительные сообщения можно добавлять здесь -->
         </div>
     </div>
 
-    <div class="version">v0.0.1</div>
+    <div class="version">v0.0.2</div>
     <script src="script.js"></script>
 </body>
 </html>
