@@ -24,91 +24,47 @@ document.addEventListener('DOMContentLoaded', () => {
         'Witch Doctor', 'Wraith King', 'Zeus'
     ];
 
-    const gulHeroes = ['Spectre', 'Templar Assassin', 'Terrorblade', 'Tinker', 'Void Spirit','Phantom Assassin','Shadow Fiend'];
-    const beerHeroes = ['Spirit Breaker', 'Tidehunter', 'Treant Protector', 'Viper','Dark Seer','Warlock'];
-    
-   
-        const randomizeButton = document.getElementById('randomize-hero');
-        const heroDisplay = document.getElementById('hero-display');
-        const specialMessage = document.getElementById('special-message');
-    
-        // Добавляем переменную для хранения ID анимации
-        let animationId = null;
-    
-        const getRandomHero = () => {
-            const randomIndex = Math.floor(Math.random() * heroes.length);
-            return heroes[randomIndex];
-        };
-    
-        const showSpecialMessage = (text, className) => {
-            // Останавливаем предыдущую анимацию
-            if (animationId) {
-                cancelAnimationFrame(animationId);
-            }
-    
-            // Сбрасываем позицию сообщения
-            specialMessage.style.left = '50%';
-            specialMessage.style.top = '50%';
-            specialMessage.textContent = text;
-            specialMessage.className = className;
-            specialMessage.classList.remove('hidden');
-    
-            if (className === 'beer-message') {
-                // Начальные координаты и скорость
-                let x = Math.random() * window.innerWidth * 0.8;
-                let y = Math.random() * window.innerHeight * 0.8;
-                let dx = 5;
-                let dy = 5;
-    
-                const moveMessage = () => {
-                    const rect = specialMessage.getBoundingClientRect();
-                    
-                    // Проверка столкновений с границами с учетом размера элемента
-                    if (x + rect.width >= window.innerWidth || x <= 0) {
-                        dx = -dx;
-                        x = x <= 0 ? 0 : window.innerWidth - rect.width;
-                    }
-                    if (y + rect.height >= window.innerHeight || y <= 0) {
-                        dy = -dy;
-                        y = y <= 0 ? 0 : window.innerHeight - rect.height;
-                    }
-    
-                    x += dx;
-                    y += dy;
-                    
-                    specialMessage.style.left = `${x}px`;
-                    specialMessage.style.top = `${y}px`;
-                    
-                    animationId = requestAnimationFrame(moveMessage);
-                };
-                
-                moveMessage();
-            }
-    
-            // Скрываем сообщение через 3 секунды
-            setTimeout(() => {
-                specialMessage.classList.add('hidden');
-                if (className === 'beer-message' && animationId) {
-                    cancelAnimationFrame(animationId);
-                }
-            }, 3000);
-        };
-    
-        randomizeButton.addEventListener('click', () => {
-            const chosenHero = getRandomHero();
-            heroDisplay.textContent = `Ваш герой: ${chosenHero}`;
-            
-            // Сбрасываем анимацию при новом выборе
-            if (animationId) {
-                cancelAnimationFrame(animationId);
-                animationId = null;
-            }
-            specialMessage.classList.add('hidden');
-    
-            if (gulHeroes.includes(chosenHero)) {
-                showSpecialMessage('да ты реальный гуль', 'gul-message');
-            } else if (beerHeroes.includes(chosenHero)) {
-                showSpecialMessage('пиво', 'beer-message');
-            }
-        });
+    const gulHeroes = ['Spectre', 'Templar Assassin', 'Terrorblade', 'Tinker', 'Void Spirit', 'Phantom Assassin', 'Shadow Fiend'];
+    const beerHeroes = ['Spirit Breaker', 'Tidehunter', 'Treant Protector', 'Viper', 'Dark Seer', 'Warlock'];
+
+    const randomizeButton = document.getElementById('randomize-hero');
+    const resetButton = document.getElementById('reset-hero');
+    const heroDisplay = document.getElementById('hero-display');
+    const goulMessage = document.getElementById('goul-message');
+    const beerMessage = document.getElementById('beer-message');
+    const enigmaMessage = document.getElementById('enigma-message');
+
+    resetButton.disabled = true;
+
+    const hideAllMessages = () => {
+        goulMessage.classList.add('hidden');
+        beerMessage.classList.add('hidden');
+        enigmaMessage.classList.add('hidden');
+    };
+
+    randomizeButton.addEventListener('click', () => {
+        const randomIndex = Math.floor(Math.random() * heroes.length);
+        const chosenHero = heroes[randomIndex];
+        heroDisplay.textContent = `Ваш герой: ${chosenHero}`;
+        
+        hideAllMessages();
+        
+        if (gulHeroes.includes(chosenHero)) {
+            goulMessage.classList.remove('hidden');
+        } else if (beerHeroes.includes(chosenHero)) {
+            beerMessage.classList.remove('hidden');
+        } else if (chosenHero === 'Enigma') {
+            enigmaMessage.classList.remove('hidden');
+        }
+
+        randomizeButton.disabled = true;
+        resetButton.disabled = false;
     });
+
+    resetButton.addEventListener('click', () => {
+        heroDisplay.textContent = '';
+        hideAllMessages();
+        randomizeButton.disabled = false;
+        resetButton.disabled = true;
+    });
+});
