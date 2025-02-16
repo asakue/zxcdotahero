@@ -27,15 +27,7 @@
 - 🎯 Геймеры, ищущие вдохновения для следующей игры
 - 🎪 Те, кто хочет повеселиться с нестандартными визуальными эффектами
 
-## 🚀 Installation
-bash
-# Clone repository
-git clone https://github.com/yourusername/dota2-hero-roulette.git
 
-# Open directory
-cd dota2-hero-roulette
-
-# Open index.html in your browser
 ## 🎮 Usage
 
 1. Откройте приложение в браузере
