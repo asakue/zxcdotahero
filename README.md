@@ -56,4 +56,4 @@
 
 ## 📝 License
 
-MIT © [Your Name]
+MIT © [asakue]
