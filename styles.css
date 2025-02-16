@@ -5,7 +5,6 @@ body, html {
     overflow: hidden;
     font-family: 'Arial', sans-serif;
     color: #fff;
-    
 }
 
 .background-image {
@@ -35,6 +34,10 @@ body, html {
     backdrop-filter: blur(5px);
     max-width: 600px;
     width: 90%;
+}
+
+.advanced-selection {
+    margin-bottom: 20px;
 }
 
 .message-container {
@@ -79,7 +82,15 @@ button:not(:disabled):hover {
     text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
 }
 
-#goul-message,#beer-message,#enigma-message,#zemelya-message,#terrorblade-message,#io-message,#earthshaker-message,#antimage-message {
+#goul-message,
+#beer-message,
+#enigma-message,
+#zemelya-message,
+#terrorblade-message,
+#io-message,
+#earthshaker-message,
+#antimage-message,
+#soso-message {
     font-size: 2em;
     font-weight: bold;
     color: #9c2d2d;
@@ -113,7 +124,15 @@ button:not(:disabled):hover {
         right: 20px;
     }
 
-    #goul-message,#beer-message,#enigma-message,#zemelya-message,#terrorblade-message,#io-message,#earthshaker-message,#antimage-message{
+    #goul-message,
+    #beer-message,
+    #enigma-message,
+    #zemelya-message,
+    #terrorblade-message,
+    #io-message,
+    #earthshaker-message,
+    #antimage-message,
+    #soso-message {
         font-size: 1.5em;
     }
 
