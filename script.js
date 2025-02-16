@@ -24,6 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
         'Witch Doctor', 'Wraith King', 'Zeus'
     ];
 
+    // Героев, для которых будут показаны специальные сообщения
     const gulHeroes = ['Spectre', 'Templar Assassin', 'Terrorblade', 'Tinker', 'Void Spirit', 'Phantom Assassin', 'Shadow Fiend'];
     const beerHeroes = ['Spirit Breaker', 'Tidehunter', 'Treant Protector', 'Viper', 'Dark Seer', 'Warlock'];
 
@@ -36,6 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     resetButton.disabled = true;
 
+    // Функция для скрытия всех сообщений
     const hideAllMessages = () => {
         goulMessage.classList.add('hidden');
         beerMessage.classList.add('hidden');
