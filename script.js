@@ -25,15 +25,20 @@ document.addEventListener('DOMContentLoaded', () => {
     ];
 
     // Героев, для которых будут показаны специальные сообщения
-    const gulHeroes = ['Spectre', 'Templar Assassin', 'Terrorblade', 'Tinker', 'Void Spirit', 'Phantom Assassin', 'Shadow Fiend'];
+    const gulHeroes = ['Spectre', 'Templar Assassin', 'Tinker', 'Void Spirit', 'Phantom Assassin', 'Shadow Fiend'];
     const beerHeroes = ['Spirit Breaker', 'Tidehunter', 'Treant Protector', 'Viper', 'Dark Seer', 'Warlock'];
-
+   
     const randomizeButton = document.getElementById('randomize-hero');
     const resetButton = document.getElementById('reset-hero');
     const heroDisplay = document.getElementById('hero-display');
     const goulMessage = document.getElementById('goul-message');
     const beerMessage = document.getElementById('beer-message');
     const enigmaMessage = document.getElementById('enigma-message');
+    const zemelyaMessage = document.getElementById('zemelya-message');
+    const terrorMessage = document.getElementById('terrorblade-message');
+    const ioMessage = document.getElementById('io-message');
+    const EarthshakerMessage = document.getElementById('earthshaker-message');
+    const antimagerMessage = document.getElementById('antimage-message');
 
     resetButton.disabled = true;
 
@@ -42,8 +47,13 @@ document.addEventListener('DOMContentLoaded', () => {
         goulMessage.classList.add('hidden');
         beerMessage.classList.add('hidden');
         enigmaMessage.classList.add('hidden');
+        zemelyaMessage.classList.add('hidden');
+        terrorMessage.classList.add('hidden');
+        ioMessage.classList.add('hidden');
+        EarthshakerMessage.classList.add('hidden');
+        enigmaMessage.classList.add('hidden');
+        antimagerMessage.classList.add('hidden');
     };
-
     randomizeButton.addEventListener('click', () => {
         const randomIndex = Math.floor(Math.random() * heroes.length);
         const chosenHero = heroes[randomIndex];
@@ -57,8 +67,17 @@ document.addEventListener('DOMContentLoaded', () => {
             beerMessage.classList.remove('hidden');
         } else if (chosenHero === 'Enigma') {
             enigmaMessage.classList.remove('hidden');
-        }
-
+        } else if (chosenHero === 'Earth Spirit') {
+            zemelyaMessage.classList.remove('hidden');
+        }    else if (chosenHero === 'Terrorblade') {
+            terrorMessage.classList.remove('hidden');
+        }   else if (chosenHero === 'Io') {
+            ioMessage.classList.remove('hidden');
+        }   else if (chosenHero === 'Earthshaker') {
+            EarthshakerMessage.classList.remove('hidden');
+        }   else if (chosenHero === 'Anti-Mage') {
+            antimagerMessage.classList.remove('hidden');
+        }  
         randomizeButton.disabled = true;
         resetButton.disabled = false;
     });
