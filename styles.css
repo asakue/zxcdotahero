@@ -79,10 +79,10 @@ button:not(:disabled):hover {
     text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
 }
 
-#special-message, #enigma-message, #goul-message, #beer-message {
+#goul-message,#beer-message,#enigma-message,#zemelya-message,#terrorblade-message,#io-message,#earthshaker-message,#antimage-message {
     font-size: 2em;
     font-weight: bold;
-    color: #ff0000;
+    color: #9c2d2d;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
     animation: shake 0.1s infinite;
     margin-bottom: 20px;
@@ -113,7 +113,7 @@ button:not(:disabled):hover {
         right: 20px;
     }
 
-    #special-message, #enigma-message, #goul-message, #beer-message {
+    #goul-message,#beer-message,#enigma-message,#zemelya-message,#terrorblade-message,#io-message,#earthshaker-message,#antimage-message{
         font-size: 1.5em;
     }
 
