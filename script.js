@@ -1,132 +1,157 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const heroes = {
-        all: [
-            'Abaddon', 'Alchemist', 'Ancient Apparition', 'Anti-Mage', 'Arc Warden',
-            'Axe', 'Bane', 'Batrider', 'Beastmaster', 'Bloodseeker', 'Bounty Hunter',
-            'Brewmaster', 'Bristleback', 'Broodmother', 'Centaur Warrunner', 'Chaos Knight',
-            'Chen', 'Clinkz', 'Clockwerk', 'Crystal Maiden', 'Dark Seer', 'Dark Willow',
-            'Dawnbreaker', 'Dazzle', 'Death Prophet', 'Disruptor', 'Doom', 'Dragon Knight',
-            'Drow Ranger', 'Earth Spirit', 'Earthshaker', 'Elder Titan', 'Ember Spirit',
-            'Enchantress', 'Enigma', 'Faceless Void', 'Grimstroke', 'Gyrocopter', 'Hoodwink',
-            'Huskar', 'Invoker', 'Io', 'Jakiro', 'Juggernaut', 'Keeper of the Light',
-            'Kunkka', 'Legion Commander', 'Leshrac', 'Lich', 'Lifestealer', 'Lina',
-            'Lion', 'Lone Druid', 'Luna', 'Lycan', 'Magnus', 'Marci', 'Mars', 'Medusa',
-            'Meepo', 'Mirana', 'Monkey King', 'Morphling', 'Muerta', 'Naga Siren',
-            'Nature\'s Prophet', 'Necrophos', 'Night Stalker', 'Nyx Assassin', 'Ogre Magi',
-            'Omniknight', 'Oracle', 'Outworld Destroyer', 'Pangolier', 'Phantom Assassin',
-            'Phantom Lancer', 'Phoenix', 'Primal Beast', 'Puck', 'Pudge', 'Pugna',
-            'Queen of Pain', 'Razor', 'Riki', 'Rubick', 'Sand King', 'Shadow Demon',
-            'Shadow Fiend', 'Shadow Shaman', 'Silencer', 'Skywrath Mage', 'Slardar',
-            'Slark', 'Snapfire', 'Sniper', 'Spectre', 'Spirit Breaker', 'Storm Spirit',
-            'Sven', 'Techies', 'Templar Assassin', 'Terrorblade', 'Tidehunter',
-            'Timbersaw', 'Tinker', 'Tiny', 'Treant Protector', 'Troll Warlord', 'Tusk',
-            'Underlord', 'Undying', 'Ursa', 'Vengeful Spirit', 'Venomancer', 'Viper',
-            'Visage', 'Void Spirit', 'Warlock', 'Weaver', 'Windranger', 'Winter Wyvern',
-            'Witch Doctor', 'Wraith King', 'Zeus'
-        ],
-        strength: [
-            'Axe', 'Beastmaster', 'Brewmaster', 'Bristleback', 'Centaur Warrunner', 
-    'Chaos Knight', 'Clockwerk', 'Dawnbreaker', 'Doom', 'Dragon Knight', 
-    'Earth Spirit', 'Earthshaker', 'Elder Titan', 'Huskar', 'Io', 
-    'Kunkka', 'Legion Commander', 'Lifestealer', 'Lycan', 'Magnus', 
-    'Marci', 'Mars', 'Night Stalker', 'Omniknight', 'Phoenix', 
-    'Pudge', 'Sand King', 'Slardar', 'Snapfire', 'Spirit Breaker', 
-    'Sven', 'Tidehunter', 'Timbersaw', 'Tiny', 'Treant Protector', 
-    'Tusk', 'Underlord', 'Undying', 'Wraith King'
-        ],
-        agility: [
-           'Anti-Mage', 'Arc Warden', 'Bloodseeker', 'Bounty Hunter', 'Broodmother',
-    'Clinkz', 'Drow Ranger', 'Ember Spirit', 'Faceless Void', 'Gyrocopter',
-    'Hoodwink', 'Juggernaut', 'Lone Druid', 'Luna', 'Medusa', 
-    'Meepo', 'Mirana', 'Monkey King', 'Morphling', 'Naga Siren',
-    'Nyx Assassin', 'Pangolier', 'Phantom Assassin', 'Phantom Lancer', 'Razor',
-    'Riki', 'Shadow Fiend', 'Slark', 'Sniper', 'Spectre',
-    'Templar Assassin', 'Terrorblade', 'Troll Warlord', 'Ursa', 'Vengeful Spirit',
-    'Venomancer', 'Viper', 'Weaver'
-        ],
-        intelligence: [
-            'Ancient Apparition', 'Bane', 'Batrider', 'Chen', 'Crystal Maiden',
-    'Dark Seer', 'Dark Willow', 'Dazzle', 'Death Prophet', 'Disruptor',
-    'Enchantress', 'Enigma', 'Grimstroke', 'Invoker', 'Jakiro',
-    'Keeper of the Light', 'Leshrac', 'Lich', 'Lina', 'Lion',
-    'Nature\'s Prophet', 'Necrophos', 'Ogre Magi', 'Oracle', 'Outworld Destroyer',
-    'Puck', 'Pugna', 'Queen of Pain', 'Rubick', 'Shadow Demon',
-    'Shadow Shaman', 'Silencer', 'Skywrath Mage', 'Storm Spirit', 'Techies',
-    'Tinker', 'Visage', 'Void Spirit', 'Warlock', 'Windranger',
-    'Winter Wyvern', 'Witch Doctor', 'Zeus'
-        ],
-        universal: [
-            'Void Spirit', 'Snapfire', 'Hoodwink', 'Marci', 'Muerta'
-            
-        ]
+    const HERO_DATA = {         strength: [
+        'Abaddon', 'Alchemist', 'Axe', 'Beastmaster', 'Brewmaster',
+        'Bristleback', 'Centaur', 'Chaos Knight', 'Dawnbreaker', 'Doom',
+        'Dragon Knight', 'Earthshaker', 'Huskar', 'Kunkka', 'Legion Commander',
+        'Lifestealer', 'Lycan', 'Mars', 'Night Stalker', 'Primal Beast',
+        'Pudge', 'Slardar', 'Spirit Breaker', 'Sven', 'Tidehunter',
+        'Timbersaw', 'Tiny', 'Treant Protector', 'Tusk', 'Underlord',
+        'Undying', 'Wraith King'
+    ],
+    agility: [
+        'Anti-Mage', 'Arc Warden', 'Bloodseeker', 'Bounty Hunter',
+        'Clinkz', 'Drow Ranger', 'Ember Spirit', 'Faceless Void',
+        'Gyrocopter', 'Hoodwink', 'Juggernaut', 'Luna', 'Medusa',
+        'Monkey King', 'Morphling', 'Naga Siren', 'Phantom Assassin',
+        'Phantom Lancer', 'Razor', 'Riki', 'Shadow Fiend', 'Slark',
+        'Sniper', 'Spectre', 'Templar Assassin', 'Terrorblade',
+        'Troll Warlord', 'Ursa', 'Vengeful Spirit', 'Venomancer', 'Viper'
+    ],
+    intelligence: [
+        'Ancient Apparition', 'Bane', 'Batrider', 'Chen',
+        'Crystal Maiden', 'Dark Willow', 'Dazzle', 'Death Prophet',
+        'Disruptor', 'Enchantress', 'Enigma', 'Grimstroke', 'Invoker',
+        'Jakiro', 'Keeper of the Light', 'Leshrac', 'Lich', 'Lina',
+        'Lion', 'Nature\'s Prophet', 'Necrophos', 'Oracle', 'Outworld Destroyer',
+        'Puck', 'Pugna', 'Queen of Pain', 'Rubick', 'Shadow Demon',
+        'Skywrath Mage', 'Storm Spirit', 'Techies', 'Tinker', 'Visage',
+        'Warlock', 'Windranger', 'Winter Wyvern', 'Witch Doctor', 'Zeus'
+    ],
+    universal: [
+        'Void Spirit', 'Muerta', 'Marci', 'Dawnbreaker', 'Pangolier',
+        'Snapfire', 'Dark Seer', 'Magnus', 'Earth Spirit', 'Io'
+    ]
+};
+    const SPECIAL_MESSAGES = {         'Spectre': ['ДА ТЫ РЕАЛЬНЫЙ ГУЛЬ', 'ТЕНЕВОЙ ДЕМОН'],
+        'Tinker': ['ХАКЕР ДЕТЕКТЕД', 'РЕПЕТЕР 9000'],
+        'Earthshaker': ['ЗЕМЛЕТРЯСЕНИЕ!', 'БЕЛГОРОДСКОЕ БРЕВНО'],
+        'Techies': ['БУМ-БУМ-БАХ!', 'МИНА-САМОУБИЙЦА'],
+        'Pudge': ['МЯСНОЙ ЦЕХ', 'ХУКЕР 3000'],
+        'Anti-Mage': ['МАНА-ХАКЕР', 'РАДИК НЕ СПАСЁТ'],
+        'Invoker': ['10 ПАЛЬЦЕВ', 'ОРБИТАЛЬНЫЙ УДАР'],
+        'Lion': ['СОСИ-ХВАТАЙ', 'ПАЛЬЦЫ В РОТ'],
+        'Io': ['ШАРИКИ НАСВИСТЕЛЬ', 'АСТРАЛЬНЫЙ ВАМПИР'],
+        'Meepo': ['КЛОНИРОВАНИЕ!', '5 В 1'],
+        'Chen': ['АДМИН ДОТЫ', 'КРЕСТОНОСЕЦ']
+ };
+
+    const DOM = {
+        rouletteTrack: document.getElementById('rouletteTrack'),
+        spinBtn: document.getElementById('spinBtn'),
+        resetBtn: document.getElementById('resetBtn'),
+        attributeRadios: document.querySelectorAll('input[name="attribute"]'),
+        specialMessage: document.getElementById('specialMessage'),
+        messageText: document.getElementById('messageText'),
+        continueBtn: document.getElementById('continueBtn')
     };
 
-    const gulHeroes = ['Spectre', 'Templar Assassin', 'Tinker', 'Void Spirit', 'Phantom Assassin', 'Shadow Fiend'];
-    const beerHeroes = ['Spirit Breaker', 'Tidehunter', 'Treant Protector', 'Viper', 'Dark Seer', 'Warlock'];
+    let currentHero = null;
+    let isSpinning = false;
+    let startTime = null;
+    let spinDuration = 3000;
 
-    const randomizeButton = document.getElementById('randomize-hero');
-    const resetButton = document.getElementById('reset-hero');
-    const heroDisplay = document.getElementById('hero-display');
-    const goulMessage = document.getElementById('goul-message');
-    const beerMessage = document.getElementById('beer-message');
-    const enigmaMessage = document.getElementById('enigma-message');
-    const zemelyaMessage = document.getElementById('zemelya-message');
-    const terrorMessage = document.getElementById('terrorblade-message');
-    const ioMessage = document.getElementById('io-message');
-    const EarthshakerMessage = document.getElementById('earthshaker-message');
-    const antimagerMessage = document.getElementById('antimage-message');
-    const sosoMessage = document.getElementById('soso-message');
-
-    resetButton.disabled = true;
-    const hideAllMessages = () => {
-        goulMessage.classList.add('hidden');
-        beerMessage.classList.add('hidden');
-        enigmaMessage.classList.add('hidden');
-        zemelyaMessage.classList.add('hidden');
-        terrorMessage.classList.add('hidden');
-        ioMessage.classList.add('hidden');
-        EarthshakerMessage.classList.add('hidden');
-        antimagerMessage.classList.add('hidden');
-        sosoMessage.classList.add('hidden');
+    const init = () => {
+        generateRouletteItems();
+        setupEventListeners();
     };
 
-    randomizeButton.addEventListener('click', () => {
-        const selectedAttribute = document.querySelector('input[name="attribute"]:checked').value;
-        const selectedHeroes = heroes[selectedAttribute];
-        const randomIndex = Math.floor(Math.random() * selectedHeroes.length);
-        const chosenHero = selectedHeroes[randomIndex];
-        heroDisplay.textContent = `Ваш герой: ${chosenHero}`;
+    const generateRouletteItems = () => {
+        DOM.rouletteTrack.innerHTML = '';
+        const attribute = document.querySelector('input[name="attribute"]:checked').value;
+        const heroes = attribute === 'all' 
+            ? Object.values(HERO_DATA).flat() 
+            : HERO_DATA[attribute];
+
+        heroes.forEach(hero => {
+            const item = document.createElement('div');
+            item.className = 'roulette-item';
+            item.textContent = hero;
+            DOM.rouletteTrack.appendChild(item);
+        });
+
+        DOM.rouletteTrack.style.width = `${heroes.length * 150}px`;
+    };
+
+    const setupEventListeners = () => {
+        DOM.spinBtn.addEventListener('click', startSpin);
+        DOM.resetBtn.addEventListener('click', resetRoulette);
+        DOM.continueBtn.addEventListener('click', hideMessage);
+        DOM.attributeRadios.forEach(radio => {
+            radio.addEventListener('change', handleAttributeChange);
+        });
+    };
+
+    const startSpin = () => {
+        if (isSpinning) return;
+        isSpinning = true;
+        DOM.spinBtn.disabled = true;
+        startTime = Date.now();
+        animate();
+    };
+
+    const animate = () => {
+        const progress = (Date.now() - startTime) / spinDuration;
         
-        hideAllMessages();
-        
-        if (gulHeroes.includes(chosenHero)) {
-            goulMessage.classList.remove('hidden');
-        } else if (beerHeroes.includes(chosenHero)) {
-            beerMessage.classList.remove('hidden');
-        } else if (chosenHero === 'Enigma') {
-            enigmaMessage.classList.remove('hidden');
-        } else if (chosenHero === 'Earth Spirit') {
-            zemelyaMessage.classList.remove('hidden');
-        } else if (chosenHero === 'Terrorblade') {
-            terrorMessage.classList.remove('hidden');
-        } else if (chosenHero === 'Io') {
-            ioMessage.classList.remove('hidden');
-        } else if (chosenHero === 'Earthshaker') {
-            EarthshakerMessage.classList.remove('hidden');
-        } else if (chosenHero === 'Anti-Mage') {
-            antimagerMessage.classList.remove('hidden');
-        } else if (chosenHero === 'Lion') {
-            sosoMessage.classList.remove('hidden');
+        if (progress < 1) {
+            DOM.rouletteTrack.style.transform = `translateX(${-progress * 2000}%)`;
+            requestAnimationFrame(animate);
+        } else {
+            finishSpin();
         }
+    };
 
-        randomizeButton.disabled = true;
-        resetButton.disabled = false;
-    });
+    const finishSpin = () => {
+        const items = Array.from(DOM.rouletteTrack.children);
+        const randomIndex = Math.floor(Math.random() * items.length);
+        currentHero = items[randomIndex].textContent;
+        
+        DOM.rouletteTrack.style.transform = `translateX(${-randomIndex * 150}px)`;
+        DOM.resetBtn.disabled = false;
+        isSpinning = false;
+        
+        if (SPECIAL_MESSAGES[currentHero]) {
+            showSpecialMessage();
+        }
+    };
 
-    resetButton.addEventListener('click', () => {
-        heroDisplay.textContent = '';
-        hideAllMessages();
-        randomizeButton.disabled = false;
-        resetButton.disabled = true;
-    });
+    const showSpecialMessage = () => {
+        DOM.messageText.textContent = SPECIAL_MESSAGES[currentHero][
+            Math.floor(Math.random() * SPECIAL_MESSAGES[currentHero].length)
+        ];
+        DOM.specialMessage.classList.remove('hidden');
+    };
+
+    const resetRoulette = () => {
+        DOM.rouletteTrack.style.transition = 'none';
+        DOM.rouletteTrack.style.transform = 'translateX(0)';
+        setTimeout(() => {
+            DOM.rouletteTrack.style.transition = 'transform 2s cubic-bezier(0.25, 0.1, 0.25, 1)';
+        }, 10);
+        
+        DOM.resetBtn.disabled = true;
+        DOM.spinBtn.disabled = false;
+        currentHero = null;
+        hideMessage();
+    };
+
+    const hideMessage = () => {
+        DOM.specialMessage.classList.add('hidden');
+    };
+
+    const handleAttributeChange = () => {
+        generateRouletteItems();
+        resetRoulette();
+    };
+
+    init();
 });
