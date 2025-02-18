@@ -2,45 +2,70 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
     <title>Dota 2 Hero Roulette — ZXC Goul Edition</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="background-image" style="background-image: url('background.jpg');"></div>
+    <div class="background-overlay"></div>
     
-    <div class="main-container">
-        <div class="content">
-            <h1>Dota 2 Hero Roulette — ZXC Goul Edition</h1>
-            
-            <!-- Новый раздел для расширенного выбора -->
-            <div class="advanced-selection">
-                <label><input type="radio" name="attribute" value="all" checked> Все</label>
-                <label><input type="radio" name="attribute" value="strength"> Сила</label>
-                <label><input type="radio" name="attribute" value="agility"> Ловкость</label>
-                <label><input type="radio" name="attribute" value="intelligence"> Интеллект</label>
-                <label><input type="radio" name="attribute" value="universal"> Универсальность</label>
+    <div class="main-wrapper">
+        <div class="roulette-container">
+            <div class="roulette-track" id="rouletteTrack">
+            </div>
+            <div class="roulette-pointer"></div>
+        </div>
+
+        <div class="content-container">
+            <header class="main-header">
+                <h1 class="title">DOTA 2 ROULETTE <span class="glitch-text">ZXC EDITION</span></h1>
+            </header>
+
+            <div class="attribute-grid">
+                <div class="attribute-item">
+                    <input type="radio" name="attribute" id="all" value="all" checked>
+                    <label for="all" class="attribute-btn">🌀 ALL</label>
+                </div>
+                <div class="attribute-item">
+                    <input type="radio" name="attribute" id="strength" value="strength">
+                    <label for="strength" class="attribute-btn red-bg">💪 STR</label>
+                </div>
+                <div class="attribute-item">
+                    <input type="radio" name="attribute" id="agility" value="agility">
+                    <label for="agility" class="attribute-btn green-bg">⚡️ AGI</label>
+                </div>
+                <div class="attribute-item">
+                    <input type="radio" name="attribute" id="intelligence" value="intelligence">
+                    <label for="intelligence" class="attribute-btn blue-bg">🧠 INT</label>
+                </div>
+                <div class="attribute-item">
+                    <input type="radio" name="attribute" id="universal" value="universal">
+                    <label for="universal" class="attribute-btn purple-bg">🌌 UNI</label>
+                </div>
             </div>
 
-            <button id="randomize-hero">Выбрать героя</button>
-            <button id="reset-hero">Сбросить</button>
-            <div id="hero-display"></div>
+            <div class="control-panel">
+                <button id="spinBtn" class="main-btn spin-btn">
+                    <span class="btn-icon">🎰</span>
+                    КРУТИТЬ
+                </button>
+                <button id="resetBtn" class="secondary-btn" disabled>
+                    <span class="btn-icon">💀</span>
+                    СБРОС
+                </button>
+            </div>
         </div>
-        
-        <div class="message-container">
-            <div id="goul-message" class="hidden">да ты реальный гуль</div>
-            <div id="beer-message" class="hidden">ПИВО</div>
-            <div id="enigma-message" class="hidden">катя возьми телефон</div>
-            <div id="zemelya-message" class="hidden">ЗЕМЕЛЯЯЯ!!!</div>
-            <div id="terrorblade-message" class="hidden">демон в голове</div>
-            <div id="io-message" class="hidden">анальный шарик!!!</div>
-            <div id="earthshaker-message" class="hidden">БеЛгОрОдСкОе бРеВнО!!</div>
-            <div id="antimage-message" class="hidden">только через радик</div>
-            <div id="soso-message" class="hidden">соси соси</div>
+
+        <div class="fullscreen-message hidden" id="specialMessage">
+            <div class="message-content" id="messageText"></div>
+            <div class="continue-btn" id="continueBtn">▶️ ПРОДОЛЖИТЬ</div>
         </div>
     </div>
 
-    <div class="version">v0.0.4</div>
+    <div class="version-label">v2.1 STABLE</div>
     <script src="script.js"></script>
 </body>
 </html>
