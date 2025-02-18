@@ -1,151 +1,350 @@
-body, html {
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    overflow: hidden;
-    font-family: 'Arial', sans-serif;
-    color: #fff;
+/* ===== Базовые настройки ===== */
+:root {
+    --primary-color: #FF3366;
+    --secondary-color: #33CCFF;
+    --bg-overlay: rgba(0, 0, 0, 0.92);
+    --glitch-1: #FF0022;
+    --glitch-2: #00FF88;
+    --font-title: 'Press Start 2P', cursive;
+    --font-main: 'Roboto Mono', monospace;
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.background-image {
+/* ===== Общие стили ===== */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    min-height: 100vh;
+    overflow-x: hidden;
+    background: url('background.jpg') no-repeat center/cover fixed;
+    font-family: var(--font-main);
+    line-height: 1.6;
+    position: relative;
+}
+
+.background-overlay {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: var(--bg-overlay);
+    z-index: -1;
+}
+
+/* ===== Основная структура ===== */
+.main-wrapper {
+    display: flex;
+    min-height: 100vh;
+    padding: 2rem;
+    gap: 2rem;
+}
+
+/* ===== Рулетка ===== */
+.roulette-container {
+    flex: 0 0 300px;
+    height: 120px;
+    border: 3px solid var(--primary-color);
+    border-radius: 15px;
+    overflow: hidden;
+    position: relative;
+    background: rgba(0, 0, 0, 0.7);
+    box-shadow: 0 0 20px rgba(255, 51, 102, 0.3);
+}
+
+
+.roulette-track {
+    display: flex;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    transition: transform 2s cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+
+.roulette-item {
+    min-width: 150px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.1rem;
+    padding: 0 1.5rem;
+    border-right: 2px solid var(--primary-color);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+.roulette-pointer {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    height: 100%;
+    width: 4px;
+    background: var(--primary-color);
+    transform: translateX(-50%);
+    box-shadow: 0 0 15px var(--primary-color);
+    z-index: 2;
+}
+
+/* ===== Основной контент ===== */
+.content-container {
+    flex: 1;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.main-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.title {
+    color: white;
+    font-family: var(--font-title);
+    font-size: 2.2rem;
+    letter-spacing: 3px;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+}
+
+.glitch-text {
+    color: var(--primary-color);
+    animation: glitch 1s infinite;
+}
+
+/* ===== Выбор атрибутов ===== */
+.attribute-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.attribute-item input[type="radio"] {
+    display: none;
+}
+
+.attribute-btn {
+    display: block;
+    padding: 1.2rem;
+    text-align: center;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: var(--transition);
+    font-family: var(--font-title);
+    font-size: 0.9rem;
+    border: 2px solid transparent;
+}
+
+.attribute-btn:hover {
+    transform: translateY(-3px);
+}
+
+.red-bg {
+    background: rgba(255, 0, 68, 0.25);
+    border-color: #FF0044;
+}
+
+.green-bg {
+    background: rgba(0, 255, 136, 0.25);
+    border-color: #00FF88;
+}
+
+.blue-bg {
+    background: rgba(0, 119, 255, 0.25);
+    border-color: #0077FF;
+}
+
+.purple-bg {
+    background: rgba(153, 51, 255, 0.25);
+    border-color: #9933FF;
+}
+
+input[type="radio"]:checked + .attribute-btn {
+    background: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 0 15px currentColor;
+}
+
+/* ===== Панель управления ===== */
+.control-panel {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-top: 3rem;
+}
+
+.main-btn {
+    padding: 1.5rem 3rem;
+    border: none;
+    border-radius: 12px;
+    background: var(--primary-color);
+    color: white;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    text-transform: uppercase;
+}
+
+.main-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    filter: grayscale(0.8);
+}
+
+.main-btn:not(:disabled):hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 25px var(--primary-color);
+}
+.secondary-btn {
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid var(--primary-color);
+}
+
+/* ===== Специальные сообщения ===== */
+.fullscreen-message {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-size: cover;
-    background-position: center;
-    z-index: -1;
-    filter: brightness(0.4);
-}
-
-.main-container {
-    display: flex;
-    justify-content: center;
+    background: rgba(0, 0, 0, 0.96);
+    display: none;
     align-items: center;
-    height: 100vh;
-}
-
-.content {
-    background-color: rgba(0, 0, 0, 0.7);
-    padding: 30px;
-    border-radius: 15px;
-    text-align: center;
-    backdrop-filter: blur(5px);
-    max-width: 600px;
-    width: 90%;
-}
-
-.advanced-selection {
-    margin-bottom: 20px;
-}
-
-.message-container {
-    position: fixed;
-    right: 50px;
-    top: 50%;
-    transform: translateY(-50%);
+    justify-content: center;
+    flex-direction: column;
     z-index: 1000;
 }
 
-h1 {
-    font-size: 2em;
-    margin-bottom: 20px;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+.message-content {
+    font-size: 3.5rem;
+    color: var(--primary-color);
+    text-align: center;
+    padding: 2rem;
+    font-family: var(--font-title);
+    text-shadow: 0 0 30px var(--glitch-1),
+                 0 0 15px var(--glitch-2);
+    animation: text-glitch 0.8s infinite;
 }
 
-button {
-    padding: 12px 24px;
-    font-size: 1em;
-    background-color: #e91e63;
-    border: none;
-    border-radius: 5px;
-    color: #fff;
+.continue-btn {
+    margin-top: 3rem;
+    padding: 1.2rem 2.5rem;
+    background: var(--primary-color);
+    border-radius: 8px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    margin: 5px;
+    animation: pulse 1.5s infinite;
+    font-family: var(--font-title);
+    font-size: 1.2rem;
 }
 
-button:disabled {
-    background-color: #666;
-    cursor: not-allowed;
+/* ===== Анимации ===== */
+@keyframes glitch {
+    0% { text-shadow: 2px 2px var(--glitch-1); }
+    25% { text-shadow: -2px -2px var(--glitch-2); }
+    50% { text-shadow: 2px -2px var(--glitch-1); }
+    75% { text-shadow: -2px 2px var(--glitch-2); }
 }
 
-button:not(:disabled):hover {
-    background-color: #c2185b;
+@keyframes text-glitch {
+    0% { transform: translate(3px, 0); }
+    20% { transform: translate(-2px, 2px); }
+    40% { transform: translate(2px, -3px); }
+    60% { transform: translate(-3px, 1px); }
+    80% { transform: translate(1px, -2px); }
+    100% { transform: translate(0); }
 }
 
-#hero-display {
-    margin-top: 20px;
-    font-size: 1.5em;
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+@keyframes pulse {
+    0% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.1); opacity: 0.8; }
+    100% { transform: scale(1); opacity: 1; }
 }
 
-#goul-message,
-#beer-message,
-#enigma-message,
-#zemelya-message,
-#terrorblade-message,
-#io-message,
-#earthshaker-message,
-#antimage-message,
-#soso-message {
-    font-size: 2em;
-    font-weight: bold;
-    color: #9c2d2d;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
-    animation: shake 0.1s infinite;
-    margin-bottom: 20px;
+/* ===== Адаптивность ===== */
+@media (max-width: 1024px) {
+    .main-wrapper {
+        flex-direction: column;
+        padding: 1.5rem;
+    }
+
+    .roulette-container {
+        flex: none;
+        width: 100%;
+        height: 100px;
+    }
+
+    .title {
+        font-size: 1.8rem;
+    }
+
+    .attribute-btn {
+        padding: 1rem;
+        font-size: 0.8rem;
+    }
+
+    .main-btn {
+        padding: 1.2rem 2rem;
+        font-size: 1rem;
+    }
+
+    .message-content {
+        font-size: 2.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .main-wrapper {
+        padding: 1rem;
+    }
+
+    .title {
+        font-size: 1.5rem;
+    }
+
+    .roulette-item {
+        min-width: 120px;
+        font-size: 1rem;
+        padding: 0 1rem;
+    }
+
+    .attribute-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .control-panel {
+        flex-direction: column;
+    }
+
+    .message-content {
+        font-size: 1.8rem;
+        padding: 1rem;
+    }
+
+    .continue-btn {
+        font-size: 1rem;
+        padding: 1rem 2rem;
+    }
+}
+
+.version-label {
+    position: fixed;
+    bottom: 1rem;
+    right: 1rem;
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 0.8rem;
+    font-family: var(--font-main);
 }
 
 .hidden {
-    display: none;
-}
-
-.version {
-    position: fixed;
-    bottom: 10px;
-    right: 10px;
-    color: #fff;
-    font-size: 0.8em;
-}
-
-@keyframes shake {
-    0% { transform: translate(0, 0) rotate(0deg); }
-    25% { transform: translate(-2px, 0) rotate(-1deg); }
-    50% { transform: translate(0, -2px) rotate(1deg); }
-    75% { transform: translate(2px, 0) rotate(-1deg); }
-    100% { transform: translate(0, 0) rotate(0deg); }
-}
-
-@media (max-width: 768px) {
-    .message-container {
-        right: 20px;
-    }
-
-    #goul-message,
-    #beer-message,
-    #enigma-message,
-    #zemelya-message,
-    #terrorblade-message,
-    #io-message,
-    #earthshaker-message,
-    #antimage-message,
-    #soso-message {
-        font-size: 1.5em;
-    }
-
-    h1 { 
-        font-size: 1.5em; 
-    }
-    
-    button { 
-        font-size: 0.9em; 
-        padding: 10px 20px; 
-    }
-    
-    #hero-display { 
-        font-size: 1.2em; 
-    }
+    display: none !important;
 }
